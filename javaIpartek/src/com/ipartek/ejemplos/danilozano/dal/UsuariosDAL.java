@@ -1,6 +1,6 @@
-package com.ipartek.ejemplos.javierlete.dal;
+package com.ipartek.ejemplos.danilozano.dal;
 
-import com.ipartek.ejemplos.javierlete.tipos.Usuario;
+import com.ipartek.ejemplos.danilozano.tipos.Usuario;
 
 public interface UsuariosDAL {
 	public void alta(Usuario usuario);

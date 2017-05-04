@@ -1,4 +1,4 @@
-package com.ipartek.ejemplos.javierlete;
+package com.ipartek.ejemplos.danilozano;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ipartek.ejemplos.javierlete.dal.UsuariosDAL;
-import com.ipartek.ejemplos.javierlete.dal.UsuariosDALFijo;
-import com.ipartek.ejemplos.javierlete.tipos.Usuario;
+import com.ipartek.ejemplos.danilozano.dal.UsuariosDAL;
+import com.ipartek.ejemplos.danilozano.dal.UsuariosDALFijo;
+import com.ipartek.ejemplos.danilozano.tipos.Usuario;
 
 @WebServlet(name = "Saludo", urlPatterns = { "/hola" })
 public class HolaMundo extends HttpServlet {

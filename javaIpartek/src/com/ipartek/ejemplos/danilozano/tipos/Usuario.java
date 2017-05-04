@@ -1,4 +1,4 @@
-package com.ipartek.ejemplos.javierlete.tipos;
+package com.ipartek.ejemplos.danilozano.tipos;
 
 public class Usuario {
 	private String nombre, pass, errores;

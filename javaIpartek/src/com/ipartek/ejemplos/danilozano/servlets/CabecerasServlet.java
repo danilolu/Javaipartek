@@ -1,4 +1,4 @@
-package com.ipartek.ejemplos.javierlete.servlets;
+package com.ipartek.ejemplos.danilozano.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;

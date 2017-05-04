@@ -1,4 +1,4 @@
-package com.ipartek.ejemplos.javierlete.controladores;
+package com.ipartek.ejemplos.danilozano.controladores;
 
 import java.io.IOException;
 
@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.ipartek.ejemplos.javierlete.dal.UsuariosDAL;
-import com.ipartek.ejemplos.javierlete.dal.UsuariosDALFijo;
-import com.ipartek.ejemplos.javierlete.tipos.Usuario;
+import com.ipartek.ejemplos.danilozano.dal.UsuariosDAL;
+import com.ipartek.ejemplos.danilozano.dal.UsuariosDALFijo;
+import com.ipartek.ejemplos.danilozano.tipos.Usuario;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
