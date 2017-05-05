@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<jsp:useBean id="usuario" scope="page" class="com.ipartek.ejemplos.javierlete.tipos.Usuario"></jsp:useBean>
+<jsp:useBean id="usuario" scope="page" class="com.ipartek.ejemplos.danilozano.tipos.Usuario"></jsp:useBean>
 
 <h1>El usuario es ${usuario.nombre} y la password es ${usuario.pass}</h1>
 

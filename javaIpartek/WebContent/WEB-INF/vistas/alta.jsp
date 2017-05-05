@@ -1,7 +1,7 @@
 <%@ include file="includes/cabecera.jsp" %>
 
 	<jsp:useBean id="usuario" scope="request"
-		class="com.ipartek.ejemplos.javierlete.tipos.Usuario" />
+		class="com.ipartek.ejemplos.danilozano.tipos.Usuario" />
 
 	<form action="alta" method="post">
 		<fieldset>

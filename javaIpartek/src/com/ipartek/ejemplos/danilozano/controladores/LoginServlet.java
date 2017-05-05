@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.ipartek.ejemplos.danilozano.dal.DALFactory;
 import com.ipartek.ejemplos.danilozano.dal.UsuariosDAL;
-import com.ipartek.ejemplos.danilozano.dal.UsuariosDALFijo;
 import com.ipartek.ejemplos.danilozano.tipos.Usuario;
 
 @WebServlet("/login")
@@ -34,6 +34,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Recoger datos de vistas
 		String nombre = request.getParameter("nombre");
+
 		String pass = request.getParameter("pass");
 
 		String opcion = request.getParameter("opcion");
@@ -49,12 +50,12 @@ public class LoginServlet extends HttpServlet {
 		UsuariosDAL usuariosDAL = (UsuariosDAL) application.getAttribute(AltaServlet.USUARIOS_DAL);
 
 		if (usuariosDAL == null) {
-			usuariosDAL = new UsuariosDALFijo();
+			usuariosDAL = DALFactory.getUsuariosDAL();
 		}
 
 		// Sólo para crear una base de datos falsa con el
-		// contenido de un usuario "javi", "lete"
-		// usuarioDAL.alta(new Usuario("javi", "lete"));
+		// contenido de un usuario "dani", "lozano"
+		// usuarioDAL.alta(new Usuario("dani", "lozano"));
 
 		HttpSession session = request.getSession();
 		session.setMaxInactiveInterval(TIEMPO_INACTIVIDAD);

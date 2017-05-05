@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ipartek.ejemplos.danilozano.dal.DALFactory;
 import com.ipartek.ejemplos.danilozano.dal.UsuariosDAL;
-import com.ipartek.ejemplos.danilozano.dal.UsuariosDALFijo;
 import com.ipartek.ejemplos.danilozano.tipos.Usuario;
 
 @WebServlet("/alta")
@@ -31,7 +31,8 @@ public class AltaServlet extends HttpServlet {
 		String pass2 = request.getParameter("pass2");
 
 		// Inicio sin datos: mostrar formulario
-		// Datos incorrectos: sin rellenar, límite de caracteres, no coinciden contraseñas
+		// Datos incorrectos: sin rellenar, límite de caracteres, no coinciden
+		// contraseñas
 		// Las contraseñas deben ser iguales
 		// Datos correctos: guardar
 
@@ -54,7 +55,7 @@ public class AltaServlet extends HttpServlet {
 				UsuariosDAL usuariosDAL = (UsuariosDAL) application.getAttribute(USUARIOS_DAL);
 
 				if (usuariosDAL == null) {
-					usuariosDAL = new UsuariosDALFijo();
+					usuariosDAL = DALFactory.getUsuariosDAL();
 				}
 
 				usuariosDAL.alta(usuario);
