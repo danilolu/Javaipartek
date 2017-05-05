@@ -1,5 +1,5 @@
 <%@ include file="includes/cabecera.jsp" %>
-
+<h2>Alta de Usuarios</h2>
 	<jsp:useBean id="usuario" scope="request"
 		class="com.ipartek.ejemplos.danilozano.tipos.Usuario" />
 
