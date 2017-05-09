@@ -4,8 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8" />
-<title>Ejemplo MVC</title>
-<link rel="stylesheet" href="css/estilos.css" />
+<title>tienda</title>
+<link rel="stylesheet" href="css/estilo.css" />
 <script src="js/funciones.js"></script>
 </head>
 <body>
@@ -16,7 +16,7 @@
 	<nav>
 		<ul>
 			
-			<li><a href="?op=alta">Alta</a></li>
+			<li><a href="productoform?op=alta">Alta</a></li>
 			
 			<li><a href="productocrud">Mantenimiento Productos</a></li>
 		</ul>

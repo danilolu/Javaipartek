@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ejercicio.tienda.controladores.ProductoCRUDServlet;
-import ejercicio.tienda.dal.DALException;
 import ejercicio.tienda.dal.ProductosDAL;
 import ejercicio.tienda.tipos.Producto;
 
@@ -39,13 +38,6 @@ public class ProductoFormServlet extends HttpServlet {
 		RequestDispatcher rutaListado = request.getRequestDispatcher(ProductoCRUDServlet.RUTA_SERVLET_LISTADO);
 		RequestDispatcher rutaFormulario = request.getRequestDispatcher(ProductoCRUDServlet.RUTA_FORMULARIO);
 
-		// response.setContentType("text/plain");
-		// PrintWriter out = response.getWriter();
-		// out.println(op);
-		// out.println(nombre);
-		// out.println(pass);
-		// out.println(pass2);
-
 		if (op == null) {
 			rutaListado.forward(request, response);
 			return;
@@ -58,14 +50,14 @@ public class ProductoFormServlet extends HttpServlet {
 
 		switch (op) {
 		case "alta":
-			if (id != null && nombre != null && descripcion != null && precio != 0) {
+//			if (id != null && nombre != null && descripcion != null && precio != 0) {
 				dal.alta(producto);
 				rutaListado.forward(request, response);
-			} else {
-				producto.setErrores("Los campos deben estar rellenados");
-				request.setAttribute("producto", producto);
-				rutaFormulario.forward(request, response);
-			}
+//			} else {
+//				producto.setErrores("Los campos deben estar rellenados");
+//				request.setAttribute("producto", producto);
+//				rutaFormulario.forward(request, response);
+//			}
 
 			break;
 		case "modificar":
