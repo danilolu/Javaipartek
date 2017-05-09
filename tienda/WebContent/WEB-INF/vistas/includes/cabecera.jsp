@@ -15,9 +15,9 @@
 	</header>
 	<nav>
 		<ul>
-			<li><a href="login">Login</a></li>
-			<li><a href="usuarioform?op=alta">Alta</a></li>
-			<li><a href="login?opcion=logout">Salir</a></li>
-			<li><a href="usuariocrud">Mantenimiento usuarios</a></li>
+			
+			<li><a href="?op=alta">Alta</a></li>
+			
+			<li><a href="productocrud">Mantenimiento Productos</a></li>
 		</ul>
 	</nav>
