@@ -36,7 +36,7 @@ public class AltaProductoServlet extends HttpServlet {
 		if (hayDatos) {
 			if (!hayDatos) {
 				producto.setErrores("Todos los campos son requeridos ");
-				request.setAttribute("usuario", usuario);
+				request.setAttribute("producto", producto);
 			}
 		}
 
