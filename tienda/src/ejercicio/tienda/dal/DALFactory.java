@@ -1,8 +1,8 @@
 package ejercicio.tienda.dal;
 
 public class DALFactory {
-	public static ProductosDAL getUsuariosDAL() {
-		// return new UsuariosDALUsuarioUnico();
+	public static ProductosDAL getProductosDAL() {
+		
 		return new ProductosDALColecion();
 	}
 }

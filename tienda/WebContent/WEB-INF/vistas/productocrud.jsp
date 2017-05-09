@@ -15,7 +15,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<c:forEach items="${requestScope.usuarios}" var="usuario">
+		<c:forEach items="${requestScope.productos}" var="usuario">
 			<tr>
 				<td>
 					<a href="?op=modificar&id=${producto.id}">Modificar</a>

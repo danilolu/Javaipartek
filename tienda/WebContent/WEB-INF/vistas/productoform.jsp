@@ -16,7 +16,7 @@
 		</fieldset>
 		<fieldset>
 			<label for="nombre">Nombre</label> <input id="nombre" name="nombre"
-			   value="${usuario.nombre}" />
+			   value="${producto.nombre}" />
 		</fieldset>
 		<fieldset>
 			<label for="descripcion">Descripcion</label> <input type="descripcion" id="descripcion"
@@ -28,7 +28,7 @@
 		</fieldset>
 		<fieldset>
 				<input type="submit" value="${fn:toUpperCase(param.op)}" />
-			<p class="errores">${usuario.errores}</p>
+			<p class="errores">${producto.errores}</p>
 			
 			<input type="hidden" name="opform" value="${param.op}" />
 		</fieldset>
