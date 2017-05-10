@@ -1,6 +1,7 @@
 @CHARSET "UTF-8";
 body {
 	font-family: Arial, sans-serif; /* serif, monospace */
+	background-color: #eaeaea;
 }
 label {
 	display: inline-block;
@@ -16,7 +17,7 @@ input {
 }
 
 nav {
-    background-color: lightcyan;
+    background-color: #bac6ac;
     padding: 1em;
 }
 
@@ -33,7 +34,7 @@ input[type=submit], nav a, nav a:visited {
 	font-weight: bold;
 	
 	border: 1px solid black;
-	background-color: white;
+	background-color: #d5e7cd;
 	padding: 5px;
 	
 	color: black;
@@ -44,12 +45,12 @@ input[type=submit]:hover, nav a:hover {
 }
 
 input[type=submit] {
-	background-color: #333666;
+	background-color: #3a6543;
 	color: white;
 }
 
 header, footer {
-	background-color: lightgray;
+	background-color: #acccad;
 	padding: 1em;
 }
 

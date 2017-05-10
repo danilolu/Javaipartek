@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ejercicio.tienda.dal.DALException;
+
 import ejercicio.tienda.controladores.ProductoCRUDServlet;
 import ejercicio.tienda.dal.ProductosDAL;
 import ejercicio.tienda.tipos.Producto;
@@ -62,7 +64,15 @@ public class ProductoFormServlet extends HttpServlet {
 			break;
 		case "modificar":
 			
-				rutaListado.forward(request, response);
+			try {
+				dal.modificar(producto);
+			} catch (DALException de) {
+				producto.setErrores(de.getMessage());
+				request.setAttribute("producto", producto);
+				rutaFormulario.forward(request, response);
+				return;
+			}
+			rutaListado.forward(request, response);
 			
 
 			break;

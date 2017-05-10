@@ -2,7 +2,7 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<h2>Mantenimiento de usuarios</h2>
+<h2>Mantenimiento de Productos</h2>
 
 <table border="1">
 	<thead>
