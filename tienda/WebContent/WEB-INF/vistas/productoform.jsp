@@ -8,19 +8,21 @@
 
 	<form action="productoform" method="post">
 		<fieldset>
-			<label for="id">ID</label> <input id="id" name="id"
-			  required="required"  value="${producto.id}"<c:if test="${param.op == 'modificar' or param.op == 'borrar'}">
+			<label for="id">ID</label> 
+			<input id="id" name="id"  required="required"  value="${producto.id}"
+			
+			<c:if test="${param.op == 'modificar' or param.op == 'borrar'}">
 			  	readonly="readonly"
 			  </c:if>   
 			   />
 		</fieldset>
 		<fieldset>
-			<label for="nombre">Nombre</label> <input id="nombre" name="nombre"
-			   value="${producto.nombre}" />
+			<label for="nombre">Nombre</label>
+			 <input id="nombre" name="nombre"			   />
 		</fieldset>
 		<fieldset>
 			<label for="descripcion">Descripcion</label> <input type="descripcion" id="descripcion"
-				name="pass" />
+				name="descripcion" >
 		</fieldset>
 		<fieldset>
 			<label for="precio">Precio</label> <input type="precio" id="precio"

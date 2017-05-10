@@ -33,7 +33,7 @@ public class ProductoFormServlet extends HttpServlet {
 		String id =request.getParameter("id");
 		String nombre = request.getParameter("nombre");
 		String descripcion = request.getParameter("descripcion");
-		int precio = Integer.parseInt(request.getParameter("precio"));
+		String precio = request.getParameter("precio");
 
 		RequestDispatcher rutaListado = request.getRequestDispatcher(ProductoCRUDServlet.RUTA_SERVLET_LISTADO);
 		RequestDispatcher rutaFormulario = request.getRequestDispatcher(ProductoCRUDServlet.RUTA_FORMULARIO);
@@ -43,21 +43,21 @@ public class ProductoFormServlet extends HttpServlet {
 			return;
 		}
 
-		Producto producto = new Producto(id,nombre, descripcion,precio);
+		Producto producto = new Producto(id, nombre, descripcion, precio);
 
 		ServletContext application = request.getServletContext();
 		ProductosDAL dal = (ProductosDAL) application.getAttribute("dal");
 
 		switch (op) {
 		case "alta":
-//			if (id != null && nombre != null && descripcion != null && precio != 0) {
+			if (id != null || nombre != null || descripcion != null || precio != null) {
 				dal.alta(producto);
 				rutaListado.forward(request, response);
-//			} else {
-//				producto.setErrores("Los campos deben estar rellenados");
-//				request.setAttribute("producto", producto);
-//				rutaFormulario.forward(request, response);
-//			}
+			} else {
+				producto.setErrores("Los campos deben estar rellenados");
+				request.setAttribute("producto", producto);
+				rutaFormulario.forward(request, response);
+			}
 
 			break;
 		case "modificar":

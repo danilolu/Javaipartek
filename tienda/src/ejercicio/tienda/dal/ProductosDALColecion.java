@@ -14,7 +14,7 @@ public class ProductosDALColecion implements ProductosDAL {
 		if (productos.containsKey(producto.getId()))
 			throw new IdProductoYaExistenteDALException("Ya existe el producto con esta ID:  " + producto.getId());
 
-		productos.put(producto.getNombre(), producto);
+		productos.put(producto.getId(), producto);
 
 	}
 
@@ -23,7 +23,7 @@ public class ProductosDALColecion implements ProductosDAL {
 		if (!productos.containsKey(producto.getId()))
 			throw new DALException("Intento de modificar producto no existente ID: " + producto);
 
-		productos.put(producto.getNombre(), producto);
+		productos.put(producto.getId(), producto);
 
 	}
 

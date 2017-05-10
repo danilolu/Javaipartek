@@ -1,12 +1,12 @@
 package ejercicio.tienda.tipos;
 
 public class Producto {
-	private String nombre, descripcion, id, errores;
-	private int precio;
+	private String nombre, descripcion, id, precio,errores;
+	
 
 	// constructor
 
-	public Producto(String id, String nombre, String descripcion, int precio) {
+	public Producto(String id, String nombre, String descripcion, String precio) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -24,10 +24,12 @@ public class Producto {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((descripcion == null) ? 0 : descripcion.hashCode());
+		result = prime * result
+				+ ((descripcion == null) ? 0 : descripcion.hashCode());
+		result = prime * result + ((errores == null) ? 0 : errores.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
-		result = prime * result + precio;
+		result = prime * result + ((precio == null) ? 0 : precio.hashCode());
 		return result;
 	}
 
@@ -45,6 +47,11 @@ public class Producto {
 				return false;
 		} else if (!descripcion.equals(other.descripcion))
 			return false;
+		if (errores == null) {
+			if (other.errores != null)
+				return false;
+		} else if (!errores.equals(other.errores))
+			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -55,7 +62,10 @@ public class Producto {
 				return false;
 		} else if (!nombre.equals(other.nombre))
 			return false;
-		if (precio != other.precio)
+		if (precio == null) {
+			if (other.precio != null)
+				return false;
+		} else if (!precio.equals(other.precio))
 			return false;
 		return true;
 	}
@@ -65,6 +75,7 @@ public class Producto {
 		return nombre;
 	}
 
+	
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
@@ -85,11 +96,11 @@ public class Producto {
 		this.id = id;
 	}
 
-	public int getPrecio() {
+	public String getPrecio() {
 		return precio;
 	}
 
-	public void setPrecio(int precio) {
+	public void setPrecio(String precio) {
 		this.precio = precio;
 	}
 
