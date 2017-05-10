@@ -1,12 +1,13 @@
 package ejercicio.tienda.tipos;
 
 public class Producto {
-	private String nombre, descripcion, id, precio,errores;
-	
+	private String nombre, descripcion, errores;
+	private int id;
+	private double precio;
 
 	// constructor
 
-	public Producto(String id, String nombre, String descripcion, String precio) {
+	public Producto(int id, String nombre, String descripcion, double precio) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -27,9 +28,11 @@ public class Producto {
 		result = prime * result
 				+ ((descripcion == null) ? 0 : descripcion.hashCode());
 		result = prime * result + ((errores == null) ? 0 : errores.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + id;
 		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
-		result = prime * result + ((precio == null) ? 0 : precio.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(precio);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
 
@@ -52,29 +55,26 @@ public class Producto {
 				return false;
 		} else if (!errores.equals(other.errores))
 			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
+		if (id != other.id)
 			return false;
 		if (nombre == null) {
 			if (other.nombre != null)
 				return false;
 		} else if (!nombre.equals(other.nombre))
 			return false;
-		if (precio == null) {
-			if (other.precio != null)
-				return false;
-		} else if (!precio.equals(other.precio))
+		if (Double.doubleToLongBits(precio) != Double
+				.doubleToLongBits(other.precio))
 			return false;
 		return true;
 	}
+
 
 	// getters and setters
 	public String getNombre() {
 		return nombre;
 	}
 
+	
 	
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
@@ -88,19 +88,19 @@ public class Producto {
 		this.descripcion = descripcion;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	public String getPrecio() {
+	public double getPrecio() {
 		return precio;
 	}
 
-	public void setPrecio(String precio) {
+	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
 

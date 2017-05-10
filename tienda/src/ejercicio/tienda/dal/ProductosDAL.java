@@ -9,7 +9,7 @@ public interface ProductosDAL {
 
 	public void borrar(Producto producto);
 
-	public Producto buscarPorId(String id);
+	public Producto buscarPorId(int id);
 
 	public Producto[] buscarTodosLosProductos();
 

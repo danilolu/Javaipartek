@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ejercicio.tienda.dal.DALException;
-
 import ejercicio.tienda.controladores.ProductoCRUDServlet;
 import ejercicio.tienda.dal.ProductosDAL;
 import ejercicio.tienda.tipos.Producto;
@@ -32,11 +31,20 @@ public class ProductoFormServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String op = request.getParameter("opform");
 
-		String id =request.getParameter("id");
+		int id ;
 		String nombre = request.getParameter("nombre");
 		String descripcion = request.getParameter("descripcion");
-		String precio = request.getParameter("precio");
-
+		double precio ;
+if(request.getParameter("id")==null || request.getParameter("id")==""){
+	id=0;
+}else{
+	id = Integer.parseInt(request.getParameter("id"));
+}
+if(request.getParameter("precio")==null || request.getParameter("precio")==""){
+	precio=0;
+}else{
+	precio = Double.parseDouble(request.getParameter("precio"));
+}
 		RequestDispatcher rutaListado = request.getRequestDispatcher(ProductoCRUDServlet.RUTA_SERVLET_LISTADO);
 		RequestDispatcher rutaFormulario = request.getRequestDispatcher(ProductoCRUDServlet.RUTA_FORMULARIO);
 
@@ -52,7 +60,7 @@ public class ProductoFormServlet extends HttpServlet {
 
 		switch (op) {
 		case "alta":
-			if (id != null || nombre != null || descripcion != null || precio != null) {
+			if (id != 0 || nombre != null || descripcion != null || precio != 0) {
 				dal.alta(producto);
 				rutaListado.forward(request, response);
 			} else {

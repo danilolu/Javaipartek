@@ -1,13 +1,14 @@
 package ejercicio.tienda.dal;
 
-import java.util.HashMap;
+
 import java.util.Map;
+import java.util.TreeMap;
 
 import ejercicio.tienda.tipos.Producto;
 
 public class ProductosDALColecion implements ProductosDAL {
 
-	private Map<String, Producto> productos = new HashMap<String, Producto>();
+	private Map<Integer, Producto> productos = new TreeMap<Integer, Producto>();
 
 	@Override
 	public void alta(Producto producto) {
@@ -46,7 +47,7 @@ public class ProductosDALColecion implements ProductosDAL {
 	}
 
 	@Override
-	public Producto buscarPorId(String id) {
+	public Producto buscarPorId(int id) {
 
 		return productos.get(id);
 	}
