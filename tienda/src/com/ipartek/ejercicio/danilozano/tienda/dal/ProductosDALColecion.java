@@ -1,9 +1,9 @@
-package ejercicio.tienda.dal;
+package com.ipartek.ejercicio.danilozano.tienda.dal;
 
 import java.util.Map;
 import java.util.TreeMap;
 
-import ejercicio.tienda.tipos.Producto;
+import com.ipartek.ejercicio.danilozano.tienda.tipos.Producto;
 
 public class ProductosDALColecion implements ProductosDAL {
 

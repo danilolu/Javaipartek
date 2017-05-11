@@ -1,6 +1,6 @@
-package ejercicio.tienda.dal;
+package com.ipartek.ejercicio.danilozano.tienda.dal;
 
-import ejercicio.tienda.tipos.Producto;
+import com.ipartek.ejercicio.danilozano.tienda.tipos.Producto;
 
 public interface ProductosDAL {
 	public void alta(Producto producto);

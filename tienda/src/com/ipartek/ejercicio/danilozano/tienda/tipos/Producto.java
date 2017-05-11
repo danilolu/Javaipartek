@@ -1,6 +1,6 @@
-package ejercicio.tienda.tipos;
+package com.ipartek.ejercicio.danilozano.tienda.tipos;
 
-import ejercicio.tienda.dal.ProductosDALColecion;
+import com.ipartek.ejercicio.danilozano.tienda.dal.ProductosDALColecion;
 
 public class Producto {
 	private String nombre, descripcion, errores;

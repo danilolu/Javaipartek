@@ -1,4 +1,4 @@
-package ejercicio.tienda.controladores;
+package com.ipartek.ejercicio.danilozano.tienda.controladores;
 
 import java.io.IOException;
 
@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ejercicio.tienda.dal.DALException;
-import ejercicio.tienda.dal.IdProductoYaExistenteDALException;
-import ejercicio.tienda.dal.ProductosDAL;
-import ejercicio.tienda.tipos.Producto;
+import com.ipartek.ejercicio.danilozano.tienda.dal.DALException;
+import com.ipartek.ejercicio.danilozano.tienda.dal.IdProductoYaExistenteDALException;
+import com.ipartek.ejercicio.danilozano.tienda.dal.ProductosDAL;
+import com.ipartek.ejercicio.danilozano.tienda.tipos.Producto;
 
 @WebServlet("/productoform")
 public class ProductoFormServlet extends HttpServlet {

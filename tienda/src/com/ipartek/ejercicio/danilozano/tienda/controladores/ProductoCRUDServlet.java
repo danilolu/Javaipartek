@@ -1,4 +1,4 @@
-package ejercicio.tienda.controladores;
+package com.ipartek.ejercicio.danilozano.tienda.controladores;
 
 import java.io.IOException;
 
@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ejercicio.tienda.dal.DALFactory;
-import ejercicio.tienda.dal.ProductosDAL;
-import ejercicio.tienda.tipos.Producto;
+import com.ipartek.ejercicio.danilozano.tienda.dal.DALFactory;
+import com.ipartek.ejercicio.danilozano.tienda.dal.ProductosDAL;
+import com.ipartek.ejercicio.danilozano.tienda.tipos.Producto;
 
 @WebServlet("/productocrud")
 public class ProductoCRUDServlet extends HttpServlet {

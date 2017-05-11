@@ -4,7 +4,7 @@
 	<h2>Formulario de Alta de Productos</h2>
 	
 	<jsp:useBean id="producto" scope="request"
-		class="ejercicio.tienda.tipos.Producto" />
+		class="com.ipartek.ejercicio.danilozano.tienda.tipos.Producto" />
 
 	<form action="productoform" method="post">
 		<fieldset>

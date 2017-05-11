@@ -1,4 +1,4 @@
-package ejercicio.tienda.dal;
+package com.ipartek.ejercicio.danilozano.tienda.dal;
 
 public class DALException extends RuntimeException {
 
