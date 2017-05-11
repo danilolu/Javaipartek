@@ -29,8 +29,13 @@
 				name="precio" />
 		</fieldset>
 		<fieldset>
-				<input type="submit" value="${fn:toUpperCase(param.op)}" />
-			<p class="errores">${producto.errores}</p>
+				<input type="submit" value="${fn:toUpperCase(param.op)}" 
+				<c:if test="${param.op == null or param.op == ''}">
+			  	Style="display:none;"
+			  </c:if>  
+				
+				/>
+			<p class="errores" >${producto.errores}</p>
 			
 			<input type="hidden" name="opform" value="${param.op}" />
 		</fieldset>

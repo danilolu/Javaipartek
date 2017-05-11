@@ -60,18 +60,25 @@ if(request.getParameter("precio")==null || request.getParameter("precio")==""){
 
 		switch (op) {
 		case "alta":
-			if (id != 0 || nombre != null || descripcion != null || precio != 0) {
-				dal.alta(producto);
-				rutaListado.forward(request, response);
-			} else {
-				producto.setErrores("Los campos deben estar rellenados");
+			if (id == 0 || nombre == null || descripcion == null || precio == 0) {
+				producto.setErrores("Los campos deben estar rellenados y no deben tener valor 0");
 				request.setAttribute("producto", producto);
 				rutaFormulario.forward(request, response);
+				
+				
+			} else {
+				dal.alta(producto);
+				rutaListado.forward(request, response);
 			}
 
 			break;
 		case "modificar":
-			
+			if (id == 0 || nombre == null || descripcion == null || precio == 0) {
+				producto.setErrores("Los campos deben estar rellenados y no deben tener valor 0");
+				request.setAttribute("producto", producto);
+				rutaFormulario.forward(request, response);
+
+			} else {
 			try {
 				dal.modificar(producto);
 			} catch (DALException de) {
@@ -81,7 +88,7 @@ if(request.getParameter("precio")==null || request.getParameter("precio")==""){
 				return;
 			}
 			rutaListado.forward(request, response);
-			
+			}
 
 			break;
 		case "borrar":

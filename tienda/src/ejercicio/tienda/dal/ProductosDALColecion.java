@@ -13,7 +13,9 @@ public class ProductosDALColecion implements ProductosDAL {
 	@Override
 	public void alta(Producto producto) {
 		if (productos.containsKey(producto.getId()))
+
 			throw new IdProductoYaExistenteDALException("Ya existe el producto con esta ID:  " + producto.getId());
+			
 
 		productos.put(producto.getId(), producto);
 

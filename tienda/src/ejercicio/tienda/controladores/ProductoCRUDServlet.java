@@ -62,11 +62,7 @@ public class ProductoCRUDServlet extends HttpServlet {
 				producto = dal.buscarPorId(id);
 				request.setAttribute("producto", producto);
 			case "alta":
-				if(request.getParameter("id")==null || request.getParameter("id")==""){
-					id=0;
-				}else{
-					id = Integer.parseInt(request.getParameter("id"));
-				}
+
 				request.getRequestDispatcher(RUTA_FORMULARIO).forward(request, response);
 				break;
 			default:
