@@ -11,8 +11,7 @@
 <body>
 	<header>
 		<h1>TIENDA</h1>
-		<p>Ejercicio de tienda</p>
-	</header>
+			</header>
 	<nav>
 		<ul>
 			

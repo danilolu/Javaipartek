@@ -32,8 +32,8 @@ public class ProductoCRUDServlet extends HttpServlet {
 		if (dal == null) {
 			dal = DALFactory.getProductosDAL();
 
-			dal.alta(new Producto(1, "nombre1", "descripcion1", 1));
-			dal.alta(new Producto(2, "nombre2", "descripcion2", 2));
+			dal.alta(new Producto("nombre1", "descripcion1", 1));
+			dal.alta(new Producto("nombre2", "descripcion2", 2));
 
 			application.setAttribute("dal", dal);
 		}
@@ -48,10 +48,10 @@ public class ProductoCRUDServlet extends HttpServlet {
 
 			request.getRequestDispatcher(RUTA_LISTADO).forward(request, response);
 		} else {
-			int id ;
-			if(request.getParameter("id")==null || request.getParameter("id")==""){
-				id=0;
-			}else{
+			int id;
+			if (request.getParameter("id") == null || request.getParameter("id") == "") {
+				id = 0;
+			} else {
 				id = Integer.parseInt(request.getParameter("id"));
 			}
 			Producto producto;

@@ -1,5 +1,7 @@
 package ejercicio.tienda.tipos;
 
+import ejercicio.tienda.dal.ProductosDALColecion;
+
 public class Producto {
 	private String nombre, descripcion, errores;
 	private int id;
@@ -7,9 +9,9 @@ public class Producto {
 
 	// constructor
 
-	public Producto(int id, String nombre, String descripcion, double precio) {
+	public Producto(String nombre, String descripcion, double precio) {
 		super();
-		this.id = id;
+		this.id = ProductosDALColecion.cont;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.precio = precio;
@@ -18,6 +20,7 @@ public class Producto {
 
 	public Producto() {
 		super();
+		this.id = ProductosDALColecion.cont;
 	}
 
 	// equals y equals
@@ -25,8 +28,7 @@ public class Producto {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((descripcion == null) ? 0 : descripcion.hashCode());
+		result = prime * result + ((descripcion == null) ? 0 : descripcion.hashCode());
 		result = prime * result + ((errores == null) ? 0 : errores.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
@@ -62,20 +64,16 @@ public class Producto {
 				return false;
 		} else if (!nombre.equals(other.nombre))
 			return false;
-		if (Double.doubleToLongBits(precio) != Double
-				.doubleToLongBits(other.precio))
+		if (Double.doubleToLongBits(precio) != Double.doubleToLongBits(other.precio))
 			return false;
 		return true;
 	}
-
 
 	// getters and setters
 	public String getNombre() {
 		return nombre;
 	}
 
-	
-	
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}

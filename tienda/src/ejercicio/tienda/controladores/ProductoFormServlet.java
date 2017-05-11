@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import ejercicio.tienda.dal.DALException;
 import ejercicio.tienda.dal.IdProductoYaExistenteDALException;
-import ejercicio.tienda.controladores.ProductoCRUDServlet;
 import ejercicio.tienda.dal.ProductosDAL;
 import ejercicio.tienda.tipos.Producto;
 
@@ -20,14 +19,12 @@ import ejercicio.tienda.tipos.Producto;
 public class ProductoFormServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 
 	}
 
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String op = request.getParameter("opform");
 
 		int id;
@@ -35,58 +32,39 @@ public class ProductoFormServlet extends HttpServlet {
 		String descripcion = request.getParameter("descripcion");
 		double precio;
 
-		if (request.getParameter("id") == null
-				|| request.getParameter("id") == "") {
+		if (request.getParameter("id") == null || request.getParameter("id") == "") {
 			id = 0;
 		} else {
 			id = Integer.parseInt(request.getParameter("id"));
 		}
-		if (request.getParameter("precio") == null
-				|| request.getParameter("precio") == "") {
+		if (request.getParameter("precio") == null || request.getParameter("precio") == "") {
 			precio = 0;
 		} else {
 			precio = Double.parseDouble(request.getParameter("precio"));
 		}
-		RequestDispatcher rutaListado = request
-				.getRequestDispatcher(ProductoCRUDServlet.RUTA_SERVLET_LISTADO);
-		RequestDispatcher rutaFormulario = request
-				.getRequestDispatcher(ProductoCRUDServlet.RUTA_FORMULARIO);
+		RequestDispatcher rutaListado = request.getRequestDispatcher(ProductoCRUDServlet.RUTA_SERVLET_LISTADO);
+		RequestDispatcher rutaFormulario = request.getRequestDispatcher(ProductoCRUDServlet.RUTA_FORMULARIO);
 
 		if (op == null) {
 			rutaListado.forward(request, response);
 			return;
 		}
 
-		Producto producto = new Producto(id, nombre, descripcion, precio);
-
+		Producto producto = new Producto(nombre, descripcion, precio);
+		producto.setId(id);
 		ServletContext application = request.getServletContext();
 		ProductosDAL dal = (ProductosDAL) application.getAttribute("dal");
 
 		switch (op) {
 		case "alta":
 
-			// String esnumero = Double.toString(precio);
-
-			// for(int i=0;i<esnumero.length();i++)
 			if (id == 0 || nombre == null || descripcion == null || precio == 0) {
-				producto.setErrores("- Los campos deben estar rellenados \n - ID y precio deben ser numericos y no tener valor 0");
+				producto.setErrores("- Los campos deben estar rellenados </br> - ID y precio deben ser numericos y no tener valor 0");
 
 				request.setAttribute("producto", producto);
 				rutaFormulario.forward(request, response);
 
-			} // else if(Character.isDigit(esnumero.charAt(i))==false){
-				// producto.setErrores("el precio debe de ser rellenado con numeros");
-				// request.setAttribute("producto", producto);
-				// rutaFormulario.forward(request, response);
-				// }
-				// else if (equals(request.getParameter("id")) == true) {
-			//
-			// producto.setErrores("ID ya existente");
-			// request.setAttribute("producto", producto);
-			// rutaFormulario.forward(request, response);
-			//
-			// }
-			else {
+			} else {
 				try {
 					dal.alta(producto);
 					rutaListado.forward(request, response);

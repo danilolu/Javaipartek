@@ -11,9 +11,10 @@
 			<label for="id">ID</label> 
 			<input id="id" name="id"  required="required"  value="${producto.id}"
 			
-			<c:if test="${param.op == 'modificar' or param.op == 'borrar'}">
-			  	readonly="readonly"
-			  </c:if>   
+			
+Style=background-color:lightgray;text-align:center;	readonly="readonly"
+			 
+  
 			   />
 		</fieldset>
 		<fieldset>

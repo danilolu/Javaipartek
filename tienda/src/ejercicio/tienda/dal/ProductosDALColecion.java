@@ -1,6 +1,5 @@
 package ejercicio.tienda.dal;
 
-
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -10,15 +9,16 @@ public class ProductosDALColecion implements ProductosDAL {
 
 	private Map<Integer, Producto> productos = new TreeMap<Integer, Producto>();
 
+	public static int cont = 1;
+
 	@Override
 	public void alta(Producto producto) {
 		if (productos.containsKey(producto.getId()))
 
-		throw new IdProductoYaExistenteDALException("Ya existe el producto con esta ID:  " + producto.getId());
-			
+			throw new IdProductoYaExistenteDALException("Ya existe el producto con esta ID:  " + producto.getId());
 
 		productos.put(producto.getId(), producto);
-
+		cont++;
 	}
 
 	@Override

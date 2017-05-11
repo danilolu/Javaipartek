@@ -30,6 +30,6 @@
 	</tbody>
 </table>
 
-<a href="?op=alta">Alta</a>
+
 
 <%@ include file="includes/pie.jsp"%>
