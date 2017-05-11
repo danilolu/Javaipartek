@@ -43,12 +43,6 @@ public class ProductosDALColecion implements ProductosDAL {
 	}
 
 	@Override
-	public boolean validar(Producto producto) {
-
-		return productos.containsValue(producto);
-	}
-
-	@Override
 	public Producto buscarPorId(int id) {
 
 		return productos.get(id);

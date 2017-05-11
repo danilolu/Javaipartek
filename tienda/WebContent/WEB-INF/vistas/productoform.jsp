@@ -43,9 +43,7 @@ Style=background-color:lightgray;text-align:center;	readonly="readonly"
 	</form>
 	
 	<c:if test="${param.op == 'borrar'}">
-		<script>
-			document.forms[0].onsubmit = confirmarBorrado;
-		</script>
+		
 	</c:if>
 	
 <%@ include file="includes/pie.jsp" %>>

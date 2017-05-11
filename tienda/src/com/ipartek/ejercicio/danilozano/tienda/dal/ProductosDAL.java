@@ -11,8 +11,6 @@ public interface ProductosDAL {
 
 	public Producto buscarPorId(int id);
 
-	public boolean validar(Producto producto);
-
 	public Producto[] buscarTodosLosProductos();
 
 }

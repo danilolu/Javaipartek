@@ -8,7 +8,8 @@ label {
 	width: 6em;
 }
 input {
-	width: 10em;Style=text-align:center;
+	width: 10em;
+"text-align:center"
 }
 .errores {
 	color: red;
