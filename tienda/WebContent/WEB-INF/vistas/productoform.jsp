@@ -26,7 +26,7 @@ Style=background-color:lightgray;text-align:center;	readonly="readonly"
 				name="descripcion" >
 		</fieldset>
 		<fieldset>
-			<label for="precio">Precio</label> <input type="number" id="precio"
+			<label for="precio">Precio</label> <input type="number" step="any" id="precio"
 				name="precio" />
 		</fieldset>
 		<fieldset>
