@@ -25,7 +25,7 @@
 				name="descripcion" >
 		</fieldset>
 		<fieldset>
-			<label for="precio">Precio</label> <input type="precio" id="precio"
+			<label for="precio">Precio</label> <input type="number" id="precio"
 				name="precio" />
 		</fieldset>
 		<fieldset>
