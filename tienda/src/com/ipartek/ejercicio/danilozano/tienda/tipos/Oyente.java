@@ -24,6 +24,7 @@ public class Oyente implements ServletContextListener, HttpSessionListener, Serv
 		se.getSession().setAttribute("carrito", new ArrayList<String>());
 	}
 
+	//
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
 		System.out.println("arranque aplicacion");
