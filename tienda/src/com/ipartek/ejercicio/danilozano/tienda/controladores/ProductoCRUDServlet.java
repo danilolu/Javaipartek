@@ -32,8 +32,8 @@ public class ProductoCRUDServlet extends HttpServlet {
 		if (dal == null) {
 			dal = DALFactory.getProductosDAL();
 
-			dal.alta(new Producto("nombre1", "descripcion1", 1));
-			dal.alta(new Producto("nombre2", "descripcion2", 2));
+			dal.alta(new Producto("sandia", "descripcion1", 1));
+			dal.alta(new Producto("manzana", "descripcion2", 2));
 
 			application.setAttribute("dal", dal);
 		}

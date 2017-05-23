@@ -9,7 +9,7 @@ label {
 }
 input {
 	width: 10em;
-"text-align:center"
+text-align:center;
 }
 .errores {
 	color: red;
@@ -57,4 +57,10 @@ header, footer {
 
 fieldset {
 	border: 0;
+}
+table th {
+  text-align: center;
+}
+table tr {
+  text-align: center; background-color: #acccad;
 }

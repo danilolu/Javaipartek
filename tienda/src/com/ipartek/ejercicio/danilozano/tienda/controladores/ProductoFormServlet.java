@@ -30,6 +30,7 @@ public class ProductoFormServlet extends HttpServlet {
 		int id;
 		String nombre = request.getParameter("nombre");
 		String descripcion = request.getParameter("descripcion");
+
 		double precio;
 
 		if (request.getParameter("id") == null || request.getParameter("id") == "") {
@@ -58,7 +59,7 @@ public class ProductoFormServlet extends HttpServlet {
 		switch (op) {
 		case "alta":
 
-			if (id == 0 || nombre == null || descripcion == null || precio == 0) {
+			if (id == 0 || nombre == "vacio" || nombre == null || descripcion == null || precio == 0) {
 				producto.setErrores("- Los campos deben estar rellenados </br> - ID y precio deben ser numericos y no tener valor 0");
 
 				request.setAttribute("producto", producto);
