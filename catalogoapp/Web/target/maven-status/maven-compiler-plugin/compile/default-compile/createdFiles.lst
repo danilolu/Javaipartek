@@ -1,0 +1,6 @@
+com\ipartek\danilozano\Web\ProductoCRUDServlet.class
+com\ipartek\danilozano\Web\AltaServlet.class
+com\ipartek\danilozano\Web\LoginServlet.class
+com\ipartek\danilozano\Web\ProductoFormServlet.class
+com\ipartek\danilozano\Web\UsuarioFormServlet.class
+com\ipartek\danilozano\Web\UsuarioCRUDServlet.class
