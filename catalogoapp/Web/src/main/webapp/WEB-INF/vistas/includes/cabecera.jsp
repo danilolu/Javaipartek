@@ -15,8 +15,17 @@
 	<nav>
 		<ul>
 			
-			<li><a href="productoform?op=alta">Alta producto</a></li>
+			<li><a href="productoform?op=alta">Alta productos</a></li>
 			
 			<li><a href="productocrud">Mantenimiento Productos</a></li>
 		</ul>
 	</nav>
+	<nav>
+		<ul>
+			<li><a href="login">Login</a></li>
+			<li><a href="usuarioform?op=alta">Alta usuarios</a></li>
+			<li><a href="login?opcion=logout">Salir</a></li>
+			<li><a href="usuariocrud">Mantenimiento usuarios</a></li>
+		</ul>
+	</nav>
+	<h4>Bienvenido ${usuario.nombre} </h4>

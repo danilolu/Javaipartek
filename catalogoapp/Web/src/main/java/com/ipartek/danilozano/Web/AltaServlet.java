@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ipartek.danilozano.DAL.DALFactory;
 import com.ipartek.danilozano.DAL.UsuarioYaExistenteDALException;
-import com.ipartek.danilozano.DAL.UsuariosDAL;
+import com.ipartek.danilozano.DAL.DAL;
 import com.ipartek.danilozano.Tipos.Usuario;
 
 @WebServlet("/alta")
@@ -53,7 +53,7 @@ public class AltaServlet extends HttpServlet {
 			} else {
 				ServletContext application = getServletContext();
 
-				UsuariosDAL usuariosDAL = (UsuariosDAL) application.getAttribute(USUARIOS_DAL);
+				DAL usuariosDAL = (DAL) application.getAttribute(USUARIOS_DAL);
 
 				if (usuariosDAL == null) {
 					usuariosDAL = DALFactory.getUsuariosDAL();

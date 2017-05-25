@@ -1,13 +1,13 @@
 package com.ipartek.danilozano.DAL;
 
 public class DALFactory {
-	public static ProductosDAL getProductosDAL() {
+	public static DAL getProductosDAL() {
 
-		return new ProductosDALColecion();
+		return new DALColeccion();
 	}
 
-	public static UsuariosDAL getUsuariosDAL() {
+	public static DAL getUsuariosDAL() {
 
-		return new UsuariosDALColeccion();
+		return new DALColeccion();
 	}
 }

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ipartek.danilozano.DAL.DALFactory;
-import com.ipartek.danilozano.DAL.ProductosDAL;
+import com.ipartek.danilozano.DAL.DAL;
 import com.ipartek.danilozano.Tipos.Producto;
 
 @WebServlet("/productocrud")
@@ -27,7 +27,7 @@ public class ProductoCRUDServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ServletContext application = getServletContext();
-		ProductosDAL dal = (ProductosDAL) application.getAttribute("dal");
+		DAL dal = (DAL) application.getAttribute("dal");
 
 		if (dal == null) {
 			dal = DALFactory.getProductosDAL();

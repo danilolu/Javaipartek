@@ -2,10 +2,12 @@ package com.ipartek.danilozano.DAL;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
+import com.ipartek.danilozano.Tipos.Producto;
 import com.ipartek.danilozano.Tipos.Usuario;
 
-public class UsuariosDALColeccion implements UsuariosDAL {
+public class DALColeccion implements DAL {
 
 	private Map<String, Usuario> usuarios = new HashMap<String, Usuario>();
 
@@ -38,6 +40,40 @@ public class UsuariosDALColeccion implements UsuariosDAL {
 	public Usuario[] buscarTodosLosUsuarios() {
 
 		return usuarios.values().toArray(new Usuario[usuarios.size()]);
+	}
+
+	private Map<Integer, Producto> productos = new TreeMap<Integer, Producto>();
+
+	public void alta(Producto producto) {
+		if (productos.containsKey(producto.getId()))
+
+			throw new IdProductoYaExistenteDALException("Ya existe el producto con esta ID:  " + producto.getId());
+
+		productos.put(producto.getId(), producto);
+
+	}
+
+	public void modificar(Producto producto) {
+		if (!productos.containsKey(producto.getId()))
+			throw new DALException("Intento de modificar producto no existente ID: " + producto);
+
+		productos.put(producto.getId(), producto);
+
+	}
+
+	public void borrar(Producto producto) {
+		productos.remove(producto.getId());
+
+	}
+
+	public Producto[] buscarTodosLosProductos() {
+
+		return productos.values().toArray(new Producto[productos.size()]);
+	}
+
+	public Producto buscarPorId(int id) {
+
+		return productos.get(id);
 	}
 
 }

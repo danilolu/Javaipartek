@@ -10,7 +10,7 @@
 		<fieldset>
 			<label for="id">ID</label> 
 			<input type="number" step="any" id="id"
-				name="id" />
+				name="id" required="required"  value="${producto.id}"/>
 			
 		
 		</fieldset>

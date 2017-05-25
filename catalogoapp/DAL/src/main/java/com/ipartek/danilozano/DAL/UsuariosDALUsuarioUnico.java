@@ -1,8 +1,9 @@
 package com.ipartek.danilozano.DAL;
 
+import com.ipartek.danilozano.Tipos.Producto;
 import com.ipartek.danilozano.Tipos.Usuario;
 
-public class UsuariosDALUsuarioUnico implements UsuariosDAL {
+public class UsuariosDALUsuarioUnico implements DAL {
 
 	private Usuario usuario;
 
@@ -35,6 +36,36 @@ public class UsuariosDALUsuarioUnico implements UsuariosDAL {
 	}
 
 	public Usuario[] buscarTodosLosUsuarios() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void alta(Producto producto) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void modificar(Producto producto) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void borrar(Producto producto) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Producto buscarPorId(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Producto[] buscarTodosLosProductos() {
 		// TODO Auto-generated method stub
 		return null;
 	}

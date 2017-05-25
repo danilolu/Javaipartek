@@ -1,9 +1,7 @@
 com\ipartek\danilozano\DAL\DALException.class
 com\ipartek\danilozano\DAL\DALFactory.class
 com\ipartek\danilozano\DAL\UsuarioYaExistenteDALException.class
-com\ipartek\danilozano\DAL\UsuariosDAL.class
-com\ipartek\danilozano\DAL\ProductosDAL.class
-com\ipartek\danilozano\DAL\UsuariosDALColeccion.class
+com\ipartek\danilozano\DAL\DALColeccion.class
 com\ipartek\danilozano\DAL\UsuariosDALUsuarioUnico.class
+com\ipartek\danilozano\DAL\DAL.class
 com\ipartek\danilozano\DAL\IdProductoYaExistenteDALException.class
-com\ipartek\danilozano\DAL\ProductosDALColecion.class

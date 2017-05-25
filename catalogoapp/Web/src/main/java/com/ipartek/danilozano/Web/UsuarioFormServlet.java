@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ipartek.danilozano.DAL.DALException;
-import com.ipartek.danilozano.DAL.UsuariosDAL;
+import com.ipartek.danilozano.DAL.DAL;
 import com.ipartek.danilozano.Tipos.Usuario;
 
 @WebServlet("/usuarioform")
@@ -47,7 +47,7 @@ public class UsuarioFormServlet extends HttpServlet {
 		Usuario usuario = new Usuario(nombre, pass);
 
 		ServletContext application = getServletContext();
-		UsuariosDAL dal = (UsuariosDAL) application.getAttribute("dal");
+		DAL dal = (DAL) application.getAttribute("dal");
 
 		switch (op) {
 		case "alta":

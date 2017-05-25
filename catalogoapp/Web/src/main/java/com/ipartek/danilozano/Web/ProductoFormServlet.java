@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ipartek.danilozano.DAL.DALException;
 import com.ipartek.danilozano.DAL.IdProductoYaExistenteDALException;
-import com.ipartek.danilozano.DAL.ProductosDAL;
+import com.ipartek.danilozano.DAL.DAL;
 import com.ipartek.danilozano.Tipos.Producto;
 
 @WebServlet("/productoform")
@@ -54,7 +54,7 @@ public class ProductoFormServlet extends HttpServlet {
 		Producto producto = new Producto(id,nombre, descripcion, precio);
 		producto.setId(id);
 		ServletContext application = getServletContext();
-		ProductosDAL dal = (ProductosDAL) application.getAttribute("dal");
+		DAL dal = (DAL) application.getAttribute("dal");
 
 		switch (op) {
 		case "alta":

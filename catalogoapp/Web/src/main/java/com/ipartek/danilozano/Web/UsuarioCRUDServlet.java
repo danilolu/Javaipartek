@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ipartek.danilozano.DAL.DALFactory;
-import com.ipartek.danilozano.DAL.UsuariosDAL;
+import com.ipartek.danilozano.DAL.DAL;
 import com.ipartek.danilozano.Tipos.Usuario;
 
 @WebServlet("/usuariocrud")
@@ -27,7 +27,7 @@ public class UsuarioCRUDServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ServletContext application = getServletContext();
-		UsuariosDAL dal = (UsuariosDAL) application.getAttribute("dal");
+		DAL dal = (DAL) application.getAttribute("dal");
 
 		if (dal == null) {
 			dal = DALFactory.getUsuariosDAL();
