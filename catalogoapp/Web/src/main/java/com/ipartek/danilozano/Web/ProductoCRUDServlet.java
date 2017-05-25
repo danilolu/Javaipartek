@@ -26,6 +26,12 @@ public class ProductoCRUDServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+
+		
+		
+		
+		
 		ServletContext application = getServletContext();
 		DAL dal = (DAL) application.getAttribute("dal");
 

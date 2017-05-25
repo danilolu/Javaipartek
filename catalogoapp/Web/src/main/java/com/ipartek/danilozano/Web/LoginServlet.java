@@ -11,46 +11,45 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.ipartek.danilozano.DAL.DALFactory;
 import com.ipartek.danilozano.DAL.DAL;
-import com.ipartek.danilozano.Tipos.Usuario;
+import com.ipartek.danilozano.DAL.DALFactory;
 import com.ipartek.danilozano.Tipos.Producto;
+import com.ipartek.danilozano.Tipos.Usuario;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/* package */static final String RUTA = "/WEB-INF/vistas/";
-	private static final String RUTA_PRINCIPAL =  "/productoform";
+	private static final String RUTA_PRINCIPAL = "/productoform";
 	private static final String RUTA_LOGIN = RUTA + "login.jsp";
 
 	public static final int TIEMPO_INACTIVIDAD = 30 * 60;
 
 	/* package */static final int MINIMO_CARACTERES = 4;
+	static final String USUARIOS_DAL = "dal";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		ServletContext application = request.getServletContext();
 		DAL dal = (DAL) application.getAttribute("dal");
-		
-		
-			if (dal == null) {
-				dal = DALFactory.getProductosDAL();
-				dal = DALFactory.getUsuariosDAL();
-				dal.alta(new Producto(1,"sandia", "descripcion1", 1));
-				dal.alta(new Producto(2,"manzana", "descripcion2", 2));
-				dal.alta(new Usuario("usuario1", "pass1"));
-				dal.alta(new Usuario("usuario2", "pass2"));
+
+		if (dal == null) {
+			dal = DALFactory.getProductosDAL();
+			dal = DALFactory.getUsuariosDAL();
+			dal.alta(new Producto(1, "sandia", "descripcion1", 1));
+			dal.alta(new Producto(2, "manzana", "descripcion2", 2));
+			dal.alta(new Usuario("admin", "pass"));
+			dal.alta(new Usuario("usuario1", "pass1"));
 
 			application.setAttribute("dal", dal);
-		
-	
+
 		}
-		
+
 		// Recoger datos de vistas
 		String nombre = request.getParameter("nombre");
 		String pass = request.getParameter("pass");
@@ -62,9 +61,8 @@ public class LoginServlet extends HttpServlet {
 		usuario.setPass(pass);
 
 		// Llamada a lógica de negocio
-		
 
-		DAL usuariosDAL = (DAL) application.getAttribute(AltaServlet.USUARIOS_DAL);
+		DAL usuariosDAL = (DAL) application.getAttribute(USUARIOS_DAL);
 
 		if (usuariosDAL == null) {
 			usuariosDAL = DALFactory.getUsuariosDAL();

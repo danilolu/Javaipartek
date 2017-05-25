@@ -98,7 +98,7 @@ public final class productocrud_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("<table border=\"1\" style=\"margin: 0 auto;\">\r\n");
       out.write("\t<thead>\r\n");
       out.write("\t\t<tr>\r\n");
-      out.write("\t\t\t<th>Operaciones</th>\r\n");
+      out.write("\t\t\t\r\n");
       out.write("\t\t\t<th>ID</th>\r\n");
       out.write("\t\t\t<th>Nombre</th>\r\n");
       out.write("\t\t\t<th>Imagen</th>\r\n");
@@ -155,15 +155,7 @@ public final class productocrud_jsp extends org.apache.jasper.runtime.HttpJspBas
         do {
           out.write("\r\n");
           out.write("\t\t\t<tr>\r\n");
-          out.write("\t\t\t\t<td>\r\n");
-          out.write("\t\t\t\t\t<a href=\"?op=modificar&id=");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${producto.id}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("\">Modificar</a></br></br>\r\n");
-          out.write("\t\t\t\t\t\r\n");
-          out.write("\t\t\t\t\t<a href=\"?op=borrar&id=");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${producto.id}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("\">Borrar</a>\r\n");
-          out.write("\t\t\t\t</td>\r\n");
+          out.write("\t\t\t\t\r\n");
           out.write("\t\t\t\t<td>");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${producto.id}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("</td>\r\n");
