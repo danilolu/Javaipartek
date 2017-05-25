@@ -20,5 +20,5 @@
 		</fieldset>
 	</form>
 	
-	<a href="usuarioform?op=alta">Alta nuevo usuario</a>
+	
 <%@ include file="includes/pie.jsp" %>
