@@ -13,21 +13,16 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
-
-
-
-
 import com.ipartek.danilozano.DAL.DAL;
-import com.ipartek.danilozano.DAL.DALFactory;
 import com.ipartek.danilozano.Tipos.Usuario;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
-	
+
 	private static final long serialVersionUID = 1L;
 	private static Logger log = Logger.getLogger(LoginServlet.class);
 	/* package */static final String RUTA = "/WEB-INF/vistas/";
-	private static final String RUTA_PRINCIPAL = "/productoform";
+	private static final String RUTA_PRINCIPAL = "/productocrud";
 	private static final String RUTA_LOGIN = RUTA + "login.jsp";
 
 	public static final int TIEMPO_INACTIVIDAD = 30 * 60;
@@ -40,16 +35,12 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		log.info(" iniciooooooo ");
 		String nombresesion = request.getParameter("nombre");
 
 		HttpSession session = request.getSession();
 
-		session.setAttribute("nombre", nombresesion);
-		
-		nombresesion = (String) session.getAttribute("nombre");		
-
 		ServletContext application = request.getServletContext();
-
 
 		// Recoger datos de vistas
 		String nombre = request.getParameter("nombre");
@@ -58,6 +49,7 @@ public class LoginServlet extends HttpServlet {
 
 		// Crear modelos en base a los datos
 		Usuario usuario = new Usuario();
+
 		usuario.setNombre(nombre);
 		usuario.setPass(pass);
 
@@ -65,15 +57,10 @@ public class LoginServlet extends HttpServlet {
 
 		DAL usuariosDAL = (DAL) application.getAttribute(USUARIOS_DAL);
 
-		if (usuariosDAL == null) {
-			usuariosDAL = DALFactory.getUsuariosDAL();
-		}
-
 		// Sólo para crear una base de datos falsa con el
 		// contenido de un usuario "javi", "lete"
 		// usuarioDAL.alta(new Usuario("javi", "lete"));
 
-		
 		session.setMaxInactiveInterval(TIEMPO_INACTIVIDAD);
 
 		Cookie cookie = new Cookie("JSESSIONID", session.getId());
@@ -90,6 +77,8 @@ public class LoginServlet extends HttpServlet {
 		// ESTADOS
 		boolean esValido = usuariosDAL.validar(usuario);
 
+		log.info("USUARIO: " + usuario);
+		log.info("ESVALIDO: " + esValido);
 		boolean sinParametros = usuario.getNombre() == null;
 
 		boolean esUsuarioYaRegistrado = session.getAttribute("usuario") != null;
@@ -102,12 +91,12 @@ public class LoginServlet extends HttpServlet {
 		// Redirigir a una nueva vista
 		if (quiereSalir) {
 			session.invalidate();// para hacer el logout
+			log.info(" sesion finalizada");
 			request.getRequestDispatcher(RUTA_LOGIN).forward(request, response);
-			log.info(  " sesion finalizada" );
 
 		} else if (esUsuarioYaRegistrado) {
 			request.getRequestDispatcher(RUTA_PRINCIPAL).forward(request, response);
-			
+
 		} else if (sinParametros) {
 			request.getRequestDispatcher(RUTA_LOGIN).forward(request, response);
 		} else if (!nombreValido || !passValido) {
@@ -115,15 +104,17 @@ public class LoginServlet extends HttpServlet {
 			request.setAttribute("usuario", usuario);
 			request.getRequestDispatcher(RUTA_LOGIN).forward(request, response);
 		} else if (esValido) {
+			log.info(nombresesion + " ha iniciado sesion ");
 			session.setAttribute("usuario", usuario);
-					
+
 			request.getRequestDispatcher(RUTA_PRINCIPAL).forward(request, response);
-			log.info( nombresesion+" ha iniciado sesion " );
+
 		} else {
+			log.info("inicio de sesion erronea");
 			usuario.setErrores("El usuario y contraseña introducidos no son válidos");
 			request.setAttribute("usuario", usuario);
 			request.getRequestDispatcher(RUTA_LOGIN).forward(request, response);
-			log.info( "inicio de sesion erronea" );
+			log.info("inicio de sesion erronea");
 
 		}
 	}

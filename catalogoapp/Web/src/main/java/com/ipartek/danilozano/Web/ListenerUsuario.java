@@ -4,7 +4,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
-import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
@@ -35,21 +34,17 @@ public class ListenerUsuario implements ServletContextListener, HttpSessionListe
 
 	@Override
 	public void contextInitialized(ServletContextEvent sc) {
-		 ServletContext session = sc.getServletContext();
-		 DAL dal = (DAL) session.getAttribute("dal");
-			
-			 dal = DALFactory.getProductosDAL();
-			 dal = DALFactory.getUsuariosDAL();
-			 dal.alta(new Producto(1, "sandia", "descripcion1", 1));
-			 dal.alta(new Producto(2, "manzana", "descripcion2", 2));
-			 dal.alta(new Usuario("admin", "pass"));
-			 dal.alta(new Usuario("usuario1", "pass1"));
-	        session.setAttribute("dal", dal);
-	
+		ServletContext application = sc.getServletContext();
+		DAL dal = (DAL) application.getAttribute("dal");
 
-		
-		
-		
+		dal = DALFactory.getProductosDAL();
+		dal = DALFactory.getUsuariosDAL();
+		dal.alta(new Producto(1, "sandia", "descripcion1", 1));
+		dal.alta(new Producto(2, "manzana", "descripcion2", 2));
+		dal.alta(new Usuario("admin", "pass"));
+		dal.alta(new Usuario("usuario1", "pass1"));
+		application.setAttribute("dal", dal);
+
 	}
 
 	private ServletContext getServletContext() {

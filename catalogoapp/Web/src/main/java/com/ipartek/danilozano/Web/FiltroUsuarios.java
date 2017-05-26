@@ -12,61 +12,80 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class FiltroUsuarios implements Filter {
+import org.apache.log4j.Logger;
 
-	public void doFilter(ServletRequest request, ServletResponse response,
-			FilterChain chain) throws IOException, ServletException {
+import com.ipartek.danilozano.Tipos.Usuario;
+
+public class FiltroUsuarios implements Filter {
+	private static Logger log = Logger.getLogger(LoginServlet.class);
+
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		System.out.println("FILTER");
-		// //Cargamos la sesion
-		// HttpServletRequest httpRequest = (HttpServletRequest)request;
-		// HttpSession session= httpRequest.getSession();
-		// Object usuario = null;
-		// //Preguntamos por un objeto en la sesion
-		// if(session!=null)usuario=session.getAttribute("nombre");
-		// if(session==null ||
-		// usuario==null)System.out.println("Session Invalid");
-		// else System.out.println("Session valid");
-		// if (session==null || usuario==null) {//si no hay sesion
-		// try {
-		// httpRequest.getRequestDispatcher("/WEB-INF/vistas/login.jsp").forward(request,
-		// response);
-		// return;
-		// }
-		// catch (ServletException e) { }
-		// catch (IOException e) {}
-		// }
-		// try {
-		// chain.doFilter(request, response);
-		// } catch (IOException e) {
-		// e.printStackTrace();
-		// } catch (ServletException e) {
-		// e.printStackTrace();
-		// }
-		// }
 
 		HttpServletRequest httpReq = (HttpServletRequest) request;
 		HttpServletResponse httpResp = (HttpServletResponse) response;
 		HttpSession session = httpReq.getSession();
+		String URL = httpReq.getPathInfo();
+		Usuario usuariosesion = (Usuario) session.getAttribute("usuario");
+		String nombresesion = usuariosesion.getNombre();
 
-		
-
-		String nombresesion = (String) session.getAttribute("nombre");
 		System.out.println(nombresesion + " hola justo antes de comparar");
-		String admin = "admin"; 
-		System.out.println("compara "+nombresesion+ " con "+ admin);
-		
-		if (nombresesion == admin) {
-			System.out.println("soy admin");
-			request.getRequestDispatcher("/WEB-INF/vistas/admin/productocrud.jsp").forward(request,
-					response);
+		String admin = "admin";
+		log.info(URL);
 
-			chain.doFilter(request, response);
-		} else {
-			System.out.println("no soy admin");
-			request.getRequestDispatcher("/WEB-INF/vistas/productocrud.jsp").forward(request,
-					response);
+		switch (URL) {
+		case "LoginServlet":
+
+		case "ProduCRUDServlet":
+			if (!admin.equals(nombresesion)) {
+
+				request.getRequestDispatcher("/WEB-INF/vistas/noadmin/productocrud.jsp").forward(request, response);
+			}
+		case "ProductoFormServlet":
+			if (!admin.equals(nombresesion)) {
+
+				request.getRequestDispatcher("/WEB-INF/vistas/noadmin/productocrud.jsp").forward(request, response);
+			}
+			break;
+		default:
+
 		}
+
+		// Usuario usuariosesion = (Usuario) session.getAttribute("usuario");
+		// if (usuariosesion == null) {
+		// System.out.println("usuario es null");
+		// request.getRequestDispatcher("/login").forward(request, response);
+		// return;
+		// }
+		//
+		// String nombresesion = usuariosesion.getNombre();
+		//
+		// System.out.println(nombresesion + " hola justo antes de comparar");
+		// String admin = "admin";
+		//
+		// System.out.println("compara " + nombresesion + " con " + admin);
+		//
+		// if (admin.equals(nombresesion)) {
+		// System.out.println("soy admin");
+		// request.getRequestDispatcher("/productocrud").forward(request,
+		// response);
+		//
+		// } else {
+		// System.out.println("no soy admin");
+		// request.getRequestDispatcher("/WEB-INF/vistas/noadmin/productocrud.jsp").forward(request,
+		// response);
+		//
+		// }
 	}
+
+	// String opcion = request.getParameter("opcion");
+	// String logout = "logout";
+	// if (logout.equals(opcion)) {
+	// request.getRequestDispatcher("/WEB-INF/vistas/login.jsp").forward(request,
+	// response);
+	// } else {
+	//
+	// }
 
 	public void init(FilterConfig fConfig) throws ServletException {
 		// TODO Auto-generated method stub
