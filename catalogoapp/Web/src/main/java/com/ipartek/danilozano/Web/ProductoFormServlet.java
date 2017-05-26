@@ -59,7 +59,7 @@ public class ProductoFormServlet extends HttpServlet {
 		switch (op) {
 		case "alta":
 
-			if (id == 0 || nombre == "vacio" || nombre == null || descripcion == null || precio == 0) {
+			if (id == 0 || nombre == null || nombre == null || descripcion == null || precio == 0) {
 				producto.setErrores("- Los campos deben estar rellenados </br> - ID y precio deben ser numericos y no tener valor 0");
 
 				request.setAttribute("producto", producto);

@@ -4,14 +4,20 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
+
+import com.ipartek.danilozano.DAL.DAL;
+import com.ipartek.danilozano.DAL.DALFactory;
+import com.ipartek.danilozano.Tipos.Producto;
+import com.ipartek.danilozano.Tipos.Usuario;
 
 @WebListener
 public class ListenerUsuario implements ServletContextListener, HttpSessionListener {
 
 	@Override
-	public void sessionCreated(HttpSessionEvent arg0) {
+	public void sessionCreated(HttpSessionEvent se) {
 
 	}
 
@@ -28,20 +34,22 @@ public class ListenerUsuario implements ServletContextListener, HttpSessionListe
 	}
 
 	@Override
-	public void contextInitialized(ServletContextEvent arg0) {
-		// crear un objeto de la dal para guardar el nombre
-		// ServletContext application = getServletContext();
-		// DAL dal = (DAL) application.getAttribute("dal");
-		//
-		// dal = DALFactory.getProductosDAL();
-		// dal = DALFactory.getUsuariosDAL();
-		// dal.alta(new Producto(1, "sandia", "descripcion1", 1));
-		// dal.alta(new Producto(2, "manzana", "descripcion2", 2));
-		// dal.alta(new Usuario("admin", "pass"));
-		// dal.alta(new Usuario("usuario1", "pass1"));
-		//
-		// application.setAttribute("dal", dal);
+	public void contextInitialized(ServletContextEvent sc) {
+		 ServletContext session = sc.getServletContext();
+		 DAL dal = (DAL) session.getAttribute("dal");
+			
+			 dal = DALFactory.getProductosDAL();
+			 dal = DALFactory.getUsuariosDAL();
+			 dal.alta(new Producto(1, "sandia", "descripcion1", 1));
+			 dal.alta(new Producto(2, "manzana", "descripcion2", 2));
+			 dal.alta(new Usuario("admin", "pass"));
+			 dal.alta(new Usuario("usuario1", "pass1"));
+	        session.setAttribute("dal", dal);
+	
 
+		
+		
+		
 	}
 
 	private ServletContext getServletContext() {

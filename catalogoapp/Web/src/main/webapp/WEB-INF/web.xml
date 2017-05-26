@@ -12,9 +12,9 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>FiltroUsuarios</filter-name>
-		<url-pattern>/WEB-INF/vistas/</url-pattern>
+		<url-pattern>/productocrud</url-pattern>
 		<dispatcher>REQUEST</dispatcher>
-		<dispatcher>FORWARD</dispatcher>
+		
 	</filter-mapping>
 	<listener>
 		<listener-class>com.ipartek.danilozano.Web.ListenerUsuario</listener-class>

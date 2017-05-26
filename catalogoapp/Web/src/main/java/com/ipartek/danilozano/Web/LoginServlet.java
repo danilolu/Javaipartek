@@ -11,15 +11,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
+
+
+
+
 import com.ipartek.danilozano.DAL.DAL;
 import com.ipartek.danilozano.DAL.DALFactory;
-import com.ipartek.danilozano.Tipos.Producto;
 import com.ipartek.danilozano.Tipos.Usuario;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
-
+	private static Logger log = Logger.getLogger(LoginServlet.class);
 	/* package */static final String RUTA = "/WEB-INF/vistas/";
 	private static final String RUTA_PRINCIPAL = "/productoform";
 	private static final String RUTA_LOGIN = RUTA + "login.jsp";
@@ -34,21 +40,16 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String nombresesion = request.getParameter("nombre");
+
+		HttpSession session = request.getSession();
+
+		session.setAttribute("nombre", nombresesion);
+		
+		nombresesion = (String) session.getAttribute("nombre");		
 
 		ServletContext application = request.getServletContext();
-		DAL dal = (DAL) application.getAttribute("dal");
 
-		if (dal == null) {
-			dal = DALFactory.getProductosDAL();
-			dal = DALFactory.getUsuariosDAL();
-			dal.alta(new Producto(1, "sandia", "descripcion1", 1));
-			dal.alta(new Producto(2, "manzana", "descripcion2", 2));
-			dal.alta(new Usuario("admin", "pass"));
-			dal.alta(new Usuario("usuario1", "pass1"));
-
-			application.setAttribute("dal", dal);
-
-		}
 
 		// Recoger datos de vistas
 		String nombre = request.getParameter("nombre");
@@ -72,7 +73,7 @@ public class LoginServlet extends HttpServlet {
 		// contenido de un usuario "javi", "lete"
 		// usuarioDAL.alta(new Usuario("javi", "lete"));
 
-		HttpSession session = request.getSession();
+		
 		session.setMaxInactiveInterval(TIEMPO_INACTIVIDAD);
 
 		Cookie cookie = new Cookie("JSESSIONID", session.getId());
@@ -102,8 +103,11 @@ public class LoginServlet extends HttpServlet {
 		if (quiereSalir) {
 			session.invalidate();// para hacer el logout
 			request.getRequestDispatcher(RUTA_LOGIN).forward(request, response);
+			log.info(  " sesion finalizada" );
+
 		} else if (esUsuarioYaRegistrado) {
 			request.getRequestDispatcher(RUTA_PRINCIPAL).forward(request, response);
+			
 		} else if (sinParametros) {
 			request.getRequestDispatcher(RUTA_LOGIN).forward(request, response);
 		} else if (!nombreValido || !passValido) {
@@ -112,12 +116,15 @@ public class LoginServlet extends HttpServlet {
 			request.getRequestDispatcher(RUTA_LOGIN).forward(request, response);
 		} else if (esValido) {
 			session.setAttribute("usuario", usuario);
-			// response.sendRedirect("principal.jsp");
+					
 			request.getRequestDispatcher(RUTA_PRINCIPAL).forward(request, response);
+			log.info( nombresesion+" ha iniciado sesion " );
 		} else {
 			usuario.setErrores("El usuario y contraseña introducidos no son válidos");
 			request.setAttribute("usuario", usuario);
 			request.getRequestDispatcher(RUTA_LOGIN).forward(request, response);
+			log.info( "inicio de sesion erronea" );
+
 		}
 	}
 }

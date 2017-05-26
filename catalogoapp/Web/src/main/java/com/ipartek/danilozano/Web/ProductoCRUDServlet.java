@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ipartek.danilozano.DAL.DALFactory;
 import com.ipartek.danilozano.DAL.DAL;
 import com.ipartek.danilozano.Tipos.Producto;
 
@@ -35,14 +34,14 @@ public class ProductoCRUDServlet extends HttpServlet {
 		ServletContext application = getServletContext();
 		DAL dal = (DAL) application.getAttribute("dal");
 
-		if (dal == null) {
-			dal = DALFactory.getProductosDAL();
-
-			dal.alta(new Producto(1, "sandia", "descripcion1", 1));
-			dal.alta(new Producto(2, "manzana", "descripcion2", 2));
-
-			application.setAttribute("dal", dal);
-		}
+//		if (dal == null) {
+//			dal = DALFactory.getProductosDAL();
+//
+//			dal.alta(new Producto(1, "sandia", "descripcion1", 1));
+//			dal.alta(new Producto(2, "manzana", "descripcion2", 2));
+//
+//			application.setAttribute("dal", dal);
+//		}
 
 		String op = request.getParameter("op");
 
